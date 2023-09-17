@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Ludo Online</title>
+        <link rel="stylesheet" type="text/css" href="assets/style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+        <!-- CDN - Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+        <style>
+            .intro_container{
+                width: 300px;
+                height: 500px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .options{
+                width: 100%;
+                height: 40px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+            }
+            .name_c{
+                width: 100%;
+                height: 200px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+            .textbox{
+                width: 70%;
+                height: 40px;
+            }
+            #main_div{
+                display: none;
+            }
+            .price{
+                width: 80%;
+                height: 50px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="modal-dialog modal-dialog-centered" id="onload">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Settings</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="intro_container">
+                        <h2 class="intro_head">Ludo Game</h2>
+                        <div class="options">
+                            <input type="checkbox" name="2p" id="2" onclick="fun()"> 2 Players
+                            <input type="checkbox" name="3p" id="3" onclick="fun()"> 3 Players
+                            <input type="checkbox" name="4p" id="4" onclick="fun()"> 4 Players
+                        </div>
+                        <div class="name_c">
+                            <input type="text" class="textbox" placeholder="Player Name" id="name1" style="background-color: red;">
+                            <input type="text" class="textbox" placeholder="Player Name" id="name2" style="background-color: blue;">
+                            <input type="text" class="textbox" placeholder="Player Name" id="name3" style="background-color: yellow">
+                            <input type="text" class="textbox" placeholder="Player Name" id="name4" style="background-color: green">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="done()">Done!</button>
+                </div>
+            </div>
+        </div>
+        <div class="main" id="main_div">
+            
+            <div class="top">
+                <div class="left green">
+                    <label for="player4" class="a" id="p4_name">Player 4</label>
+                </div>
+                <div class="space"></div>
+                <div class="diceb">
+                    <div class="dice-container" id="dice-top">
+                        <div class="dice" id="dice-1" data-face="2">
+                            <div class="dice-face" data-face="1">
+                                <span class="dot"></span>
+                            </div>
+                            <div class="dice-face" data-face="2">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <div class="dice-face" data-face="3">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <div class="dice-face" data-face="4">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <div class="dice-face" data-face="5">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <div class="dice-face" data-face="6">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space"></div>
+                <div class="right yellow">
+                    <label for="player3" class="a" id="p3_name">Player 3</label>
+                </div>
+            </div>
+            <div class="container">
+                <div class="container1">
+                    <!--green--><div class="row1-col1 green">
+                        <div class="row1-col1-child white" id="greenboard">
+                            <div class="green" id="gh1">
+                                <div class="coin" id="greencoin1" onclick="randomMove('green',1)" style="background: green;">
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="green" id="gh2">
+                                <div class="coin" id="greencoin2" onclick="randomMove('green',2)" style="background: green;">
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="green" id="gh3">
+                                <div class="coin" id="greencoin3" onclick="randomMove('green',3)" style="background: green;">
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="green" id="gh4">
+                                <div class="coin" id="greencoin4" onclick="randomMove('green',4)" style="background: green;">
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!--path--><div class="row1-col2">
+                        <!--1st line-->
+                        <div id="24"></div>
+                        <div class="icon" style="background-image: url('yellow_arrow.JPG');" id="25"></div>
+                        <div id="26"></div>
+                        <!--2nd line-->
+                        <div id="23"></div>
+                        <div class="yellow" id="y1"></div>
+                        <div class="yellow icon" style="background-image: url('star.png');" id="27">
+                        </div>
+                        <!--3rd line-->
+                        <div class="icon" style="background-image: url('star.png');" id="22">
+                        </div>
+                        <div class="yellow" id="y2"></div>
+                        <div id="28"></div>
+                        <!--4rd line-->
+                        <div id="21"></div>
+                        <div class="yellow" id="y3"></div>
+                        <div id="29"></div>
+                        <!--5rd line-->
+                        <div id="20"></div>
+                        <div class="yellow"  id="y4"></div>
+                        <div  id="30"></div>
+                        <!--6rd line-->
+                        <div id="19"></div>
+                        <div class="yellow" id="y5"></div>
+                        <div id="31"></div>
+                    </div>
+                    <!--yellow--><div class="row1-col3 yellow">
+                        <div class="row1-col3-child white" id="yellowboard">
+                            <div class="yellow" id="yh1">
+                                <div class="coin" id="yellowcoin1" onclick="randomMove('yellow',1)" style="background: yellow;"><i class="fa fa-star"></i></div>
+                            </div>
+                            <div class="yellow" id="yh2">
+                                <div class="coin" id="yellowcoin2" onclick="randomMove('yellow',2)" style="background: yellow;"><i class="fa fa-star"></i></div>
+                            </div>
+                            <div class="yellow"  id="yh3">
+                                <div class="coin" id="yellowcoin3" onclick="randomMove('yellow',3)" style="background: yellow;"><i class="fa fa-star"></i></div>
+                            </div>
+                            <div class="yellow"  id="yh4">
+                                <div class="coin" id="yellowcoin4" onclick="randomMove('yellow',4)" style="background: yellow;"><i class="fa fa-star"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container2">
+                    <!--path--><div class="row2-col1">
+                        <!--1st line-->
+                        <div id="13"></div>
+                        <div class="icon" style="background-image: url('star.png'); background-color: #84c21f;" id="14">
+                        </div>
+                        <div id="15"></div>
+                        <div id="16"></div>
+                        <div id="17"></div>
+                        <div id="18"></div>
+                        <!--2nd line-->
+                        <div class="icon" style="background-image: url('green_arrow.JPG');" id="12"></div>
+                        <div class="green" id="g1"></div>
+                        <div class="green" id="g2"></div>
+                        <div class="green" id="g3"></div>
+                        <div class="green" id="g4"></div>
+                        <div class="green" id="g5"></div>
+                        <!--3rd line-->
+                        <div id="11"></div>
+                        <div id="10"></div>
+                        <div class="icon" style="background-image: url('star.png');" id="9">
+                        </div>
+                        <div id="8"></div>
+                        <div id="7"></div>
+                        <div id="6"></div>
+                    </div>
+                    <!--Home--><div class="row2-col2">
+                        <div class="container-triangles">
+                            <div class="circle">
+                            </div>
+                            <div class="triangle-right" id="g6"></div>
+                            <div class="triangle-up" id="r6"></div>
+                            <div class="triangle-left" id="b6"></div>
+                            <div class="triangle-down" id="y6"></div>
+                        </div>
+                    </div>
+                    <!--path--><div class="row2-col3">
+                        <div id="32"></div>
+                        <div id="33"></div>
+                        <div id="34"></div>
+                        <div class="icon" style="background-image: url('star.png');" id="35">
+                        </div>
+                        <div id="36"></div>
+                        <div id="37"></div>
+                        <!--2nd line-->
+                        <div class="blue" id="b5"></div>
+                        <div class="blue" id="b4"></div>
+                        <div class="blue" id="b3"></div>
+                        <div class="blue" id="b2"></div>
+                        <div class="blue" id="b1"></div>
+                        <div class="icon" style="background-image: url('blue_arrow.JPG');" id="38"></div>
+                        <!--3rd line-->
+                        <div id="44"></div>
+                        <div id="43"></div>
+                        <div id="42"></div>
+                        <div id="41"></div>
+                        <div class="blue icon" style="background-image: url('star.png');" id="40">
+                        </div>
+                        <div id="39"></div>
+                    </div>
+                </div>
+                <div class="container3">
+                    <!--red--><div class="row3-col1 red">
+                        <div class="row3-col1-child grey" id="redboard">
+                            <div id="rh1" class="red">
+                                <div class="coin active" id="redcoin1" onclick="randomMove('red',1)" style="background: red;"><i class="fa fa-star"></i></div>
+                            </div>
+                            <div class="red" id="rh2">
+                                <div class="coin active" id="redcoin2" onclick="randomMove('red',2)" style="background: red;"><i class="fa fa-star"></i></div>
+                            </div>
+                            <div class="red" id="rh3">
+                                <div class="coin active" id="redcoin3" onclick="randomMove('red',3)" style="background: red;"><i class="fa fa-star"></i></div>
+                            </div>
+                            <div class="red" id="rh4">
+                                <div class="coin active" id="redcoin4" onclick="randomMove('red',4)" style="background: red;"><i class="fa fa-star"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--path--><div class="row3-col2">
+                        <!--1st line-->
+                        <div  id="5"></div>
+                        <div class="red" id="r5"></div>
+                        <div id="45"></div>
+                        <!--2nd line-->
+                        <div id="4"></div>
+                        <div class="red" id="r4"></div>
+                        <div id="46"></div>
+                        <!--3rd line-->
+                        <div id="3"></div>
+                        <div class="red" id="r3"></div>
+                        <div id="47"></div>
+                        <!--4rd line-->
+                        <div id="2"></div>
+                        <div class="red" id="r2"></div>
+                        <div class="icon" style="background-image: url('star.png');" id="48">
+                        </div>
+                        <!--5rd line-->
+                        <div class="red icon" style="background-image: url('star.png');" id="1">
+                        </div>
+                        <div class="red" id="r1"></div>
+                        <div id="49"></div>
+                        <!--6rd line-->
+                        <div id="52"></div>
+                        <div class="icon" style="background-image: url('red_arrow.JPG');" id="51"></div>
+                        <div id="50"></div>
+                    </div>
+                    <!--blue--><div class="row3-col3 blue">
+                        <div class="row3-col3-child white" id="blueboard">
+                            <div class="blue" id="bh1">
+                                <div class="coin" id="bluecoin1" onclick="randomMove('blue',1)" style="background: blue;"><i class="fa fa-star"></i></div>
+                            </div>
+                            <div class="blue" id="bh2">
+                                <div class="coin" id="bluecoin2" onclick="randomMove('blue',2)" style="background: blue;"><i class="fa fa-star"></i></div>
+                            </div>
+                            <div class="blue" id="bh3">
+                                <div class="coin" id="bluecoin3" onclick="randomMove('blue',3)" style="background: blue;"><i class="fa fa-star"></i></div>
+                            </div>
+                            <div class="blue" id="bh4">
+                                <div class="coin" id="bluecoin4" onclick="randomMove('blue',4)" style="background: blue;"><i class="fa fa-star"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="left red">
+                    <label for="player1" class="b" id="p1_name">Player 1</label>
+                </div>
+                <div class="space"></div>
+                <div class="diceb">
+                    <div class="dice-container" id="dice-bottom">
+                        <div class="dice" id="dice-2" data-face="2">
+                            <div class="dice-face" data-face="1">
+                                <span class="dot"></span>
+                            </div>
+                            <div class="dice-face" data-face="2">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <div class="dice-face" data-face="3">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <div class="dice-face" data-face="4">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <div class="dice-face" data-face="5">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <div class="dice-face" data-face="6">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space"></div>
+                <div class="right blue">
+                    <label for="player2" class="b" id="p2_name">Player 2</label>
+                </div>
+            </div>
+            <div class="scrap">
+                <h4 id="uselesstext1">It`s </h4><h3 id="player" style="float:left; color:red">red</h3><h4 id="uselesstext2">s turn</h4>
+            <p id="badtext" style="float:left;"></p>
+            <input type="number" name="num" id="xx">
+            <button onclick="start()">start</button>
+            </div>
+        </div>
+        <div class="modal-dialog modal-dialog-centered" id="doo">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ludo Game</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="intro_container">
+                        <h2 class="intro_head">Game Over</h2>
+                        <div class="name_c">
+                            <div class="prize"><h3>1st Place</h3><h4 id="1pr">-</h4></div>
+                            <div class="prize"><h3>2nd Place</h3><h4 id="2pr">-</h4></div>
+                            <div class="prize"><h3>3rd Place</h3><h4 id="3pr">-</h4></div>
+                            <div class="prize"><h3>4th Place</h3><h4 id="4pr">-</h4></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="done()">Done!</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="assets/main.js"></script>
+        <!-- Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    </body>
+</html>
